@@ -1,5 +1,16 @@
 # RDpkkd
 a stubborn and ambitious child with curiosity in science and talent in spacing out to the imaginary possibilities of beyondness.
+
+`
+`
+
+`
+`
+
+`
+`
+
+METAGENOMIC ANALYSIS AND EVALUATION OF GUT-MICROBIOME CHANGES DURING THE DEVELOPMENT OF ALOPECIA AREATA
 for the nanopore qualified sequences, quality check is done via NanoPlot software which i installed into my HPC environment env_0 by following below mentioned steps;
 ```
 module load bioconda
