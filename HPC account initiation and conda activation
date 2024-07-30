@@ -1,0 +1,4 @@
+sacctmgr show association USER=$da494
+sacctmgr show association USER=$user
+module load bioconda 
+conda activate env_0
