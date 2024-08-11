@@ -211,17 +211,19 @@ pie-chart generation of centrifuged decontaminated samples
 ```
 !python "C:/Users/LENOVO/Downloads/cent_out_2_pie_chart.py" "C:/Users/LENOVO/Downloads/decon_files_todo_abundance_filter" pdf
 ```
+as for more refined research on the basis of samples from the diseased individuals and the relative healthy controls, the barcodes samples, post-disease onset and post-disease controls were manually selected to go through further downstream analysis. 
+so,the file name changes from ```decon_files_todo_abundance_filter``` to ```decon_post_samples```
 abundance filtering of decontaminated samples
 ```
-!python "C:/Users/LENOVO/Downloads/genus_level_read_count_abundance.py" "C:/Users/LENOVO/Downloads/decon_files_todo_abundance_filter" 0.01 species
+!python "C:/Users/LENOVO/Downloads/genus_level_read_count_abundance.py" "C:/Users/LENOVO/Downloads/post_samples_stats/decon_post_samples" 0.01 species 
 ```
 PCA-plot generation
 ```
-!python "C:/Users/LENOVO/Downloads/abundance_PCA_3D_variance.py" "C:/Users/LENOVO/Downloads/abundancefiltered_barcode01-13_todo_stats" "C:/Users/LENOVO/Downloads/pca_plot_output_barcode01-13" "C:\Users\LENOVO\Downloads\metadata_pca_barcode01-13.txt" 3D show_variance
+!python "C:/Users/LENOVO/Downloads/abundance_PCA_3D_variance.py" "C:/Users/LENOVO/Downloads/post_samples_stats/abundance_post_0.01" "C:/Users/LENOVO/Downloads/post_samples_stats/PCA_plot_post" "C:/Users/LENOVO/Downloads/post_samples_stats/metadata_post.txt" 3D show_variance
 ```
 estimations of alpha and beta diversities
 ```
-!python "C:/Users/LENOVO/Downloads/alpha_beta_diversity.py" "C:\Users\LENOVO\Downloads\abundancefiltered_barcode01-13_todo_stats"
+!python "C:/Users/LENOVO/Downloads/alpha_beta_diversity.py" "C:/Users/LENOVO/Downloads/post_samples_stats/abundance_post_0.01"
 ```
 heatmap generation
 ```
@@ -232,7 +234,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from scipy.cluster import hierarchy
  
-directory = "C:/Users/LENOVO/Downloads/abundancefiltered_barcode01-13_todo_stats"
+directory = "C:/Users/LENOVO/Downloads/post_samples_stats/abundance_post_0.01"
  
 def abundance_list_prep(folder, top_hits):
     '''Prepares a list of unique OTUs collected from all abundance files.
@@ -317,70 +319,23 @@ from scipy.stats import shapiro
 ```
 script for normality test
 ```
+from scipy.stats import shapiro
 # Function to test normality using Shapiro-Wilk test
 def test_normality(data):
  """
  Perform Shapiro-Wilk test for normality.
  Parameters:
- data (list or array-like): "C:Users/LENOVO/Downloads/diversityFAY24736/"
- 
+ data (list or array-like): "C:/Users/LENOVO/Downloads/post_samples_stats/diversities_post/beta_diversity_matrix_post.csv"
  Returns:
  float: Test statistic.
  float: p-value.
  """
  stat, p = shapiro(data)
  return stat, p
-
-# Example data 
-alpha_diversity = [0.373898274159285, 0.168729041954119, 0.135735044079991, 
-    0.52797315192924, 0.232995277642313, 0.264033240197922, 
-    0.436631761952671, 0.986728211044696, 0.313193232563141, 
-    0.542805854346446, 0.208898638095607, 0]
-
-beta_diversity = [0.961448598130841, 0.966717479674797, 0.183800623052959, 
-    0.856201975850713, 0.487279843444227, 0.967266366816592, 
-    0.743137254901961, 0.87588820464235, 0.901094752736882, 
-    0.741362290227048, 0.682926829268293, 0.961448598130841, 
-    0.084325671559125, 0.947773103148121, 0.615439599714081, 
-    0.897501058873359, 0.091794731064764, 0.775553213909378, 
-    0.582402395485431, 0.469471857716083, 0.780619644034278, 
-    0.992280285035629, 0.084325671559125, 0.954528230390299, 
-    0.657676789127203, 0.91044776119403, 0.019615384615385, 
-    0.802924791086351, 0.625630987946842, 0.522498779892631, 
-    0.807410849111395, 0.993298969072165, 0.183800623052959, 
-    0.947773103148121, 0.954528230390299, 0.807177289769684, 
-    0.352517985611511, 0.955273947074171, 0.661971830985916, 
-    0.833024118738404, 0.866369710467706, 0.659735349716446, 
-    0.751196172248804, 0.856201975850713, 0.615439599714081, 
-    0.657676789127203, 0.807177289769684, 0.647058823529412, 
-    0.660523560209424, 0.335931410756041, 0.113480995351381, 
-    0.233373063170441, 0.35052754982415, 0.969590643274854, 
-    0.487279843444227, 0.897501058873359, 0.91044776119403, 
-    0.352517985611511, 0.647058823529412, 0.911882510013351, 
-    0.421513944223108, 0.686274509803922, 0.748266296809986, 
-    0.418269230769231, 0.869674185463659, 0.967266366816592, 
-    0.091794731064764, 0.019615384615385, 0.955273947074171, 
-    0.660523560209424, 0.911882510013351, 0.805669867398262, 
-    0.627807704034963, 0.528765539173171, 0.807802310948404, 
-    0.99341104916371, 0.743137254901961, 0.775553213909378, 
-    0.802924791086351, 0.661971830985916, 0.335931410756041, 
-    0.421513944223108, 0.805669867398262, 0.404553415061296, 
-    0.499557913351017, 0.057484348321002, 0.942731277533039, 
-    0.87588820464235, 0.582402395485431, 0.625630987946842, 
-    0.833024118738404, 0.113480995351381, 0.686274509803922, 
-    0.627807704034963, 0.404553415061296, 0.193577163247101, 
-    0.415730337078652, 0.973986993496748, 0.901094752736882, 
-    0.469471857716083, 0.522498779892631, 0.866369710467706, 
-    0.233373063170441, 0.748266296809986, 0.528765539173171, 
-    0.499557913351017, 0.193577163247101, 0.511518015357354, 
-    0.979503350413875, 0.741362290227048, 0.780619644034278, 
-    0.807410849111395, 0.659735349716446, 0.35052754982415, 
-    0.418269230769231, 0.807802310948404, 0.057484348321002, 
-    0.415730337078652, 0.511518015357354, 0.942286348501665, 
-    0.682926829268293, 0.992280285035629, 0.993298969072165, 
-    0.751196172248804, 0.969590643274854, 0.869674185463659, 
-    0.99341104916371, 0.942731277533039, 0.973986993496748, 
-    0.979503350413875, 0.942286348501665]
+    
+# Example data (replace these with your own data)
+list1 = [0.931428571, 0.920318725, 0.888059701, 0.95890411, 0.920318725, 0.870689655, 0.821538462, 0.862068966, 0.95890411, 0.921259843, 0.862068966, 0.94545455]
+list2 = [0.931428571, 0.870689655, 0.879518072, 0.921259843, 0.888059701, 0.879518072, 0.821538462, 0.945454545]
 
 # Test normality for list1
 statistic1, p_value1 = test_normality(list1)
@@ -392,7 +347,7 @@ if p_value1 > 0.05:
  print("Data is normally distributed (fail to reject H0)")
 else:
  print("Data is not normally distributed (reject H0)")
-
+    
 # Test normality for list2
 statistic2, p_value2 = test_normality(list2)
 print("\nList 2:")
@@ -404,3 +359,61 @@ if p_value2 > 0.05:
 else:
  print("Data is not normally distributed (reject H0)")
 ```
+the normality results came out as follows:
+
+List 1:
+Test statistic: 0.9292198419570923
+p-value: 0.3719165027141571
+Data is normally distributed (fail to reject H0)
+
+List 2:
+Test statistic: 0.9442594051361084
+p-value: 0.6534121632575989
+Data is normally distributed (fail to reject H0)
+
+
+as the data is normalyy distributed independant t-test will be used to check if there is any significant difference between the groups 'post disease onset' and 'post-non-diseased control'
+```
+from scipy.stats import ttest_ind
+
+# Assuming list1 and list2 are your diversity data
+# Perform paired t-test assuming equal variances
+t_statistic, p_value = ttest_ind(list1, list2)
+print("t-statistic:", t_statistic)
+print("p-value:", p_value)
+
+# Check if the difference is significant (with 95% confidence)
+if p_value < 0.05:
+ print("Reject null hypothesis: There is a significant difference in means.")
+else:
+ print("Fail to reject null hypothesis: There is no significant difference in means.")
+```
+t-statistic: 0.6702588328431881
+p-value: 0.5112012579999246
+Fail to reject null hypothesis: There is no significant difference in means.
+
+the result needs to e interpreted through a visually descriptive plot like BOX AND WHISKER PLOT OF DIVERSITY
+```
+### Box and Whisker plots for diversity lists
+
+import matplotlib.pyplot as plt
+
+def plot_box_and_whisker(diversity_lists, labels):
+ plt.figure(figsize=(8, 6))
+ plt.boxplot(diversity_lists, labels=labels)
+ plt.xlabel('Group')
+ plt.ylabel('Diversity')
+ plt.title('Box and Whisker Plot of Diversity between samples post disease onset and post-non-diseased controls')
+ plt.show()
+    
+# Example usage:
+diversity_lists = [
+ [0.931428571, 0.920318725, 0.888059701, 0.95890411, 0.920318725, 0.870689655, 0.821538462, 0.862068966, 0.95890411, 0.921259843, 0.862068966, 0.94545455], ##List1 diversity scores
+ [0.931428571, 0.870689655, 0.879518072, 0.921259843, 0.888059701, 0.879518072, 0.821538462, 0.945454545] ##List2 diversity scores
+]
+labels = ['post disease onset', 'post-non-disease control']
+plot_box_and_whisker(diversity_lists, labels)
+```
+![image](https://github.com/user-attachments/assets/0bfcce1d-b66f-4623-a6dd-907eb00bca54)
+
+the results from the independent t-test imply that there is no significant difference between the two groups, which suggests that the overall diversity values between the two groups is fairly similar.
