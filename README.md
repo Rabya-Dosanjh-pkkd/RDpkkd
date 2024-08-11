@@ -416,4 +416,4 @@ plot_box_and_whisker(diversity_lists, labels)
 ```
 ![image](https://github.com/user-attachments/assets/0bfcce1d-b66f-4623-a6dd-907eb00bca54)
 
-the results from the independent t-test imply that there is no significant difference between the two groups, which suggests that the overall diversity values between the two groups is fairly similar.
+the results from the independent t-test imply that there is no significant difference between the two groups, which suggests that the overall diversity values between the two groups is fairly similar and the box-plot suggests that diversity is slightly higher in the "post disease onset" group compared to the "post-non-disease control" group, but there is substantial overlap in their diversity ranges.
