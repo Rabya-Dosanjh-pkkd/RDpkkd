@@ -1,0 +1,13 @@
+from scipy.stats import ttest_ind
+
+# Assuming list1 and list2 are your diversity data
+# Perform paired t-test assuming equal variances
+t_statistic, p_value = ttest_ind(list1, list2)
+print("t-statistic:", t_statistic)
+print("p-value:", p_value)
+
+# Check if the difference is significant (with 95% confidence)
+if p_value < 0.05:
+ print("Reject null hypothesis: There is a significant difference in means.")
+else:
+ print("Fail to reject null hypothesis: There is no significant difference in means.")
