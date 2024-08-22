@@ -1,0 +1,22 @@
+this python script was provided by my research project supervisor Dr. Andrew Tedder associate professor in bioinformatics at faculty of life sciences at UNIVERSITY OF RADFORD
+
+
+### Box and Whisker plots for diversity lists
+
+import matplotlib.pyplot as plt
+
+def plot_box_and_whisker(diversity_lists, labels):
+ plt.figure(figsize=(8, 6))
+ plt.boxplot(diversity_lists, labels=labels)
+ plt.xlabel('Group')
+ plt.ylabel('Diversity')
+ plt.title('Box and Whisker Plot of Diversity between samples pre-disease onset and post-non-diseased')
+ plt.show()
+    
+# Example usage:
+diversity_lists = [
+ [1.66449777920046, 2.04643934467102, 4.6475290967608],
+[5.557775456014, 6.47827186868474, 0]
+]
+labels = ['pre-disease onset', 'post-non-diseased']
+plot_box_and_whisker(diversity_lists, labels)
