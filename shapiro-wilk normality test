@@ -1,0 +1,45 @@
+```pip install scipy```
+
+```from scipy.stats import shapiro
+# Function to test normality using Shapiro-Wilk test
+def test_normality(data):
+ """
+ Perform Shapiro-Wilk test for normality.
+ Parameters:
+ data (list or array-like): "C:/Users/LENOVO/Downloads/post_samples_stats/diversities_post/beta_diversity_matrix_post.csv"
+ Returns:
+ float: Test statistic.
+ float: p-value.
+ """
+ stat, p = shapiro(data)
+ return stat, p
+    
+# Example data (replace these with your own data)
+list1 = [1.66449777920046, 2.04643934467102, 4.6475290967608]
+list2 = [5.557775456014, 6.47827186868474, 0]
+
+# Test normality for list1
+statistic1, p_value1 = test_normality(list1)
+print("List 1:")
+print("Test statistic:", statistic1)
+print("p-value:", p_value1)
+
+if p_value1 > 0.05:
+ print("Data is normally distributed (fail to reject H0)")
+else:
+ print("Data is not normally distributed (reject H0)")
+    
+# Test normality for list2
+statistic2, p_value2 = test_normality(list2)
+print("\nList 2:")
+print("Test statistic:", statistic2)
+print("p-value:", p_value2)
+
+if p_value2 > 0.05:
+ print("Data is normally distributed (fail to reject H0)")
+else:
+ print("Data is not normally distributed (reject H0)")
+ ```
+
+ 
+ 
